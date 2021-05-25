@@ -1,0 +1,78 @@
+
+package main;
+
+import java.util.Scanner;
+
+public class SimpleConverter {
+	
+	public static double CupsToTeaspoons(double quantity) {
+		return quantity * 48;
+	}
+	
+	public static double MilesToKilometers(double quantity) {
+		return quantity * 1.609344;
+	}
+	
+	public static double GallonsToImperial(double quantity) {
+		return quantity * 0.83267382;
+	}
+	
+	public static double CelsiusToFahrenheit(double quantity) {
+		return ((quantity * 1.8) + 32);
+	}
+
+
+	public static void main(String[] args) {
+		//Menu
+		System.out.println("Menu: \n "
+					+ "1. Cups to Teaspoons \n "
+					+ "2. Miles to Kilometers \n "
+					+ "3. US Gallons to Imperial Gallons \n "
+					+ "4. Celsius to Fahrenheit \n "
+					+ "5. Quit");
+		
+		// Take user input
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Select an option: ");
+		int option = scanner.nextInt();
+			if (option == 1 || option == 2 || option == 3 || option == 4) {
+			System.out.println("Input quantity to be converted: ");
+			}	
+		
+				else if (option == 5) {
+					System.out.println("Quit");
+					System.exit(0);
+			}
+				else if (option != 1 || option != 2 || option != 3 || option != 4){
+					System.out.println("Not an option. Re-run program and try again");
+					System.exit(0);
+				}
+		
+		double inputQuantity = scanner.nextDouble();
+		scanner.close();
+
+		
+		// Match input with case
+		switch(option) {
+		
+		case 1: 
+			System.out.println("Teaspoons: " + CupsToTeaspoons(inputQuantity));
+		break;
+		
+		case 2:
+			System.out.println("Kilometers: " + MilesToKilometers(inputQuantity));
+		break;
+		
+		case 3: 
+			System.out.println("Imperial gallons: " + GallonsToImperial(inputQuantity));
+		break;
+		
+		case 4:
+			System.out.println("Temperature: "+ CelsiusToFahrenheit(inputQuantity)
+								+ " degrees fahrenheit");
+		break;
+		}
+		
+		}
+
+	}
