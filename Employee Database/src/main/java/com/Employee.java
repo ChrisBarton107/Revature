@@ -1,6 +1,6 @@
+package com;
 
 public class Employee {
-	
 	private int empNo;
 	private String empName;
 	private double salary;
@@ -64,5 +64,4 @@ public class Employee {
 		return "Employee # " + empNo + "," + " Name: " + empName + "," + " Salary: " + salary
 				+ " City/State: " + address;
 	}
-
 }

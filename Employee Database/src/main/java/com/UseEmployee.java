@@ -1,12 +1,10 @@
+package com;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UseEmployee  {
-	
+public class UseEmployee {
 
 	public static void main(String[] args) {
-	
 		// Employee service interface
 		EmployeeServiceImpl esInterface = new EmployeeServiceImpl();
 		
@@ -62,4 +60,7 @@ public class UseEmployee  {
 
 
 	}
+
 }
+
+

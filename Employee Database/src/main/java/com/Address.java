@@ -1,6 +1,6 @@
+package com;
 
 public class Address {
-	
 	private String city;
 	private String state;
 	
@@ -37,6 +37,4 @@ public class Address {
 		return city + ", " + state;
 	}
 	
-	
-
 }

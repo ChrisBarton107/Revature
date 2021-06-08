@@ -1,7 +1,7 @@
+package com;
 
 public interface EmployeeService {
-	
-	public void displayAllEmployees();
+public void displayAllEmployees();
 	
 	public void calculateYearlySalary();
 	
@@ -10,7 +10,4 @@ public interface EmployeeService {
 	public void updateEmployee();
 	
 	public void deleteEmployee();
-	
-	
-
 }

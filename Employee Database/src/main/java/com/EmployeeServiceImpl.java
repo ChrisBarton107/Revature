@@ -1,9 +1,10 @@
+package com;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class EmployeeServiceImpl implements EmployeeService {
-	
+
 	private static ArrayList<Employee> employeeAL = new ArrayList<Employee>() {
 		{
 		{
@@ -136,23 +137,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}	
 				
-				
 			
-		
-		
-		
-		
-} 
-			 
-	
-		 
-			 
-		 
-		
-			 
-		
-			
-
-		
-
-	
+}
