@@ -1,17 +1,34 @@
 package com;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+//import java.util.stream.Stream;
+//import java.util.stream.Collectors;
 
 public class UseEmployee {
+	
+	// Logger
+	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
 
+	
 	public static void main(String[] args) {
+		
+		LOGGER.info("Logger Name: " + LOGGER.getName());
+		
+		LOGGER.warning("Exceptions may occur");
+		
+		
+		
 		// Employee service interface
 		EmployeeServiceImpl esInterface = new EmployeeServiceImpl();
 		
 		int menuSelection = 0;
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println(":::: Employee Database ::::\n");
+		System.out.println(":::: EMPLOYEE DATABASE ::::\n");
 		
 		while(true){
 			System.out.println("SELECT ONE OF THE FOLLOWING OPTIONS\n"

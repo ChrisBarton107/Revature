@@ -1,7 +1,10 @@
 package com;
 
 import java.util.Scanner;
+import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -29,6 +32,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void displayAllEmployees() {
 		for (Employee employee : employeeAL) {
 			System.out.println(employee);
+		
+		
 		}
 		
 	}
@@ -72,39 +77,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 		int updateEmployee = update.nextInt();
 		for(Employee employee : employeeAL) {
 			if (employee.getEmpNo() == updateEmployee) {
+				System.out.println(employee.getEmpName());
 				System.out.println("UPDATE OPTIONS:\n"
 						+ "1. Name\n"
 						+ "2. Salary\n"
 						+ "3. Address\n");
-			Scanner upEmployee = new Scanner(System.in);
-			int updateOptionNumber = upEmployee.nextInt();
+				Scanner upEmployee = new Scanner(System.in);
+				int updateOptionNumber = upEmployee.nextInt();
 			
-		switch(updateOptionNumber) {
-		case 1: 
-			System.out.println(": NAME :\n");
-			System.out.println("Current name: " + employee.getEmpName());
-			System.out.println("New name:");
-			String newName = upEmployee.nextLine();
-			employee.setEmpName(newName);
-			break;
+				switch(updateOptionNumber) {
+				case 1: 
+					System.out.println(": NAME :\n");
+					System.out.println("Current name: " + employee.getEmpName());
+					System.out.println("New name:");
+					String newName = upEmployee.nextLine();
+					employee.setEmpName(newName);
+					break;
 		
-		case 2:
-			System.out.println(": SALARY :\n");
-			System.out.println(employee.getEmpName() + ", " + "Current salary: " + employee.getSalary());
-			System.out.println("New salary:");
-			Double newSalary = upEmployee.nextDouble();
-			employee.setSalary(newSalary);
-			break;
-		case 3:
-			System.out.println(": ADDRESS :\n");
-			System.out.println(employee.getEmpName() + ", " + "Current location: " + employee.getAddress());
-			System.out.println("New city:");
-			String newCity = upEmployee.nextLine();
-			System.out.println(newCity);
-			System.out.println("New state:");
-			String newState = upEmployee.nextLine();
-			employee.setAddress(new Address(newCity, newState));
-			break;
+				case 2:
+					System.out.println(": SALARY :\n");
+					System.out.println(employee.getEmpName() + ", " + "Current salary: " + employee.getSalary());
+					System.out.println("New salary:");
+					Double newSalary = upEmployee.nextDouble();
+					employee.setSalary(newSalary);
+					break;
+				
+				case 3:
+					System.out.println(": ADDRESS :\n");
+					System.out.println(employee.getEmpName() + ", " + "Current location: " + employee.getAddress());
+					System.out.println("New city:");
+					String newCity = upEmployee.nextLine();
+					System.out.println(newCity);
+					System.out.println("New state:");
+					String newState = upEmployee.nextLine();
+					employee.setAddress(new Address(newCity, newState));
+					break;
 			}	
 		}
 		}
