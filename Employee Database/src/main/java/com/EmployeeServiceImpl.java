@@ -86,7 +86,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 			System.out.println("New name:");
 			String newName = upEmployee.nextLine();
 			employee.setEmpName(newName);
-			System.out.println(employee.getEmpName());
 			break;
 		
 		case 2:
@@ -95,7 +94,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 			System.out.println("New salary:");
 			Double newSalary = upEmployee.nextDouble();
 			employee.setSalary(newSalary);
-			System.out.println(employee);
 			break;
 		case 3:
 			System.out.println(": ADDRESS :\n");
