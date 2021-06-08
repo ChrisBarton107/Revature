@@ -1,0 +1,16 @@
+
+public interface EmployeeService {
+	
+	public void displayAllEmployees();
+	
+	public void calculateYearlySalary(int empNo);
+	
+	public void findByEmployeeNo(int empNo);
+	
+	public void updateEmployee();
+	
+	public void deleteEmployee(int empNo);
+	
+	
+
+}

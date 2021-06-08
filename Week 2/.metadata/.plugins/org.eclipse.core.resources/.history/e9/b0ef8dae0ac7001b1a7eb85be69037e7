@@ -1,0 +1,83 @@
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class UseEmployee  {
+	
+
+	public static void main(String[] args) throws java.io.IOException {
+		
+		// Main method for employee data
+		
+		// Instantiate employee service interface
+		EmployeeServiceImpl esInterface = new EmployeeServiceImpl();
+		
+		int menuSelection = 0;
+		
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println(":::: Employee Database Management System ::::\n");
+		
+		while(true){
+			System.out.println("Select one of the following options\n"
+					+ "1. All Employee Data\n"
+					+ "2. Employee Finder\n"
+					+ "3. Financial\n"
+					+ "4. Update\n"
+					+ "5. Delete Employee\n"
+					+ "6. Quit");
+			  
+			 
+		try {
+			menuSelection = scan.nextInt();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		switch(menuSelection) {
+		 case 1: 
+			 System.out.println(":: Employee Data ::");
+			 esInterface.displayAllEmployees();
+			 System.out.println();
+			 break;
+			 
+		 case 2: 
+			 Scanner employeeNumber = new Scanner(System.in);
+			 System.out.println(":: Employee Finder ::");
+			 System.out.println("Enter employee number");
+			 int input = employeeNumber.nextInt();
+			 esInterface.findByEmployeeNo(input);
+			 System.out.println(esInterface.findByEmployeeNo(input).toString());
+			 employeeNumber.close();
+			 break;
+			 
+		 case 3:
+			 Scanner calcSal = new Scanner(System.in);
+			 System.out.println(":: Finance ::");
+			 System.out.println("Enter employee number ");
+			 int num = calcSal.nextInt();
+			 esInterface.calculateYearlySalary(num);
+			 break;
+			 
+		 case 4: 
+			 System.out.println(":: Update ::");
+			 esInterface.updateEmployee();
+			 break;
+			 
+		 case 5: 
+			System.out.println(":: Delete Employee ::\n");
+			System.out.println(" ");
+			break;
+				 
+		 case 6: 
+			System.exit(0);
+			
+		default:
+			System.out.println("Default case");
+			break;
+		 }
+	}
+
+}
+}
+
