@@ -3,6 +3,9 @@ package com;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.InputMismatchException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,36 +30,39 @@ public class EmployeeServiceImpl implements EmployeeService {
 	};
 
 	
-	// Implement all methods
 	
 	public void displayAllEmployees() {
-		for (Employee employee : employeeAL) {
-			System.out.println(employee);
-		
-		
-		}
-		
+		// Displays all employee data with a stream
+		employeeAL.stream()
+			.map(employee -> employee)
+			.forEach(System.out::println);
 	}
-	
+		
 
 
 	
 	public void calculateYearlySalary() {
+		try {
 		System.out.println("Enter employee number");
 		Scanner sal = new Scanner(System.in);
 		int num = sal.nextInt();
 		for (Employee employee : employeeAL) {
 			if(employee.getEmpNo() == num) {
-				System.out.println(employee.getEmpName()+" "+ employee.getSalary());
+				System.out.println(employee.getEmpName()+","+ " $" + employee.getSalary());
+			}		
+		}	
+		}catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
 			}
-		}
+	}
+			
 		
-	}	
 	
 	
 	
 	
 	public void findByEmployeeNo() {
+		try {
 		System.out.println("Enter employee number");
 		Scanner employeeNumber = new Scanner(System.in);
 		int input = employeeNumber.nextInt();
@@ -65,13 +71,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 				System.out.println(employee.getEmpNo()+", "+ employee.getEmpName());
 			}
 		}
-		
+		}catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
+		}
 	}
 
 	
 	
 	
 	public void updateEmployee() {
+		try {
 		System.out.println("Enter employee number ");
 		Scanner update = new Scanner(System.in);
 		int updateEmployee = update.nextInt();
@@ -112,16 +121,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 					String newState = upEmployee.nextLine();
 					employee.setAddress(new Address(newCity, newState));
 					break;
-			}	
+				}	
+			}
 		}
+		}catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
 		}
 		
 	}
-
+	
 	
 	
 	
 	public void deleteEmployee() {
+		try {
 		System.out.println("Enter employee number");
 		Scanner deleteEmp = new Scanner(System.in);
 		int number = deleteEmp.nextInt();
@@ -137,10 +150,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 				case "NO":
 					break;
 				}
-				
 			}
 		}
-	}	
+		}catch(InputMismatchException e) {
+			System.out.println("InputMismatchException");
+		}
+		}
+
+
+
+}	
 				
 			
-}
+

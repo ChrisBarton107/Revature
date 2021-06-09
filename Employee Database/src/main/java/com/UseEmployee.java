@@ -1,19 +1,14 @@
 package com;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.util.stream.Stream;
-//import java.util.stream.Collectors;
+
 
 public class UseEmployee {
 	
-	// Logger
 	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
 
-	
 	public static void main(String[] args) {
 		
 		LOGGER.info("Logger Name: " + LOGGER.getName());
