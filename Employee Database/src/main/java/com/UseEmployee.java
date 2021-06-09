@@ -10,9 +10,7 @@ public class UseEmployee {
 	public static void main(String[] args) {
 		
 		LOGGER.info("Logger Name: " + LOGGER.getName());
-		
 		LOGGER.warning("Exceptions may occur");
-		
 		
 		// Employee service interface
 		EmployeeServiceImpl esInterface = new EmployeeServiceImpl();
@@ -20,6 +18,7 @@ public class UseEmployee {
 		int menuSelection = 0;
 		
 		Scanner scan = new Scanner(System.in);
+		
 		System.out.println(":::: EMPLOYEE DATABASE ::::\n");
 		
 		while(true){
