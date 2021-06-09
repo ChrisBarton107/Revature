@@ -1,5 +1,7 @@
 package com;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -30,8 +32,9 @@ public class UseEmployee {
 					+ "4. Update\n"
 					+ "5. Delete\n"
 					+ "6. Quit");
-			  
+		 
 		menuSelection = scan.nextInt();
+	
 		switch(menuSelection) {
 		 case 1: 
 			 System.out.println(":: EMPLOYEE DATA ::");
@@ -65,10 +68,14 @@ public class UseEmployee {
 			LOGGER.log(Level.WARNING, "Invalid input");
 			break;
 		 }
+		
+		}
+			
 	}
+	
 
 
-	}
+	
 
 }
 

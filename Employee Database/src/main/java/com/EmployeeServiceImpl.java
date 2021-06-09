@@ -3,6 +3,7 @@ package com;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -48,8 +49,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 				System.out.println(employee.getEmpName()+","+ " $" + employee.getSalary());
 			}		
 		}	
-		}catch(InputMismatchException e) {
-			System.out.println("InputMismatchException");
+		}catch(NoSuchElementException e) {
+			System.out.println("NoSuchElementException");
 			}
 	}
 			
@@ -68,8 +69,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 				System.out.println(employee.getEmpNo()+", "+ employee.getEmpName());
 			}
 		}
-		}catch(InputMismatchException e) {
-			System.out.println("InputMismatchException");
+		}catch(NoSuchElementException e) {
+			System.out.println("NoSuchElementException");
 		}
 	}
 
@@ -121,8 +122,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 				}	
 			}
 		}
-		}catch(InputMismatchException e) {
-			System.out.println("InputMismatchException");
+		}catch(NoSuchElementException e) {
+			System.out.println("NoSuchElementException");
 		}
 		
 	}
@@ -149,8 +150,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 				}
 			}
 		}
-		}catch(InputMismatchException e) {
-			System.out.println("InputMismatchException");
+		}catch(NoSuchElementException e) {
+			System.out.println("NoSuchElementException");
 		}
 		}
 
