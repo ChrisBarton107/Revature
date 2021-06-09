@@ -2,6 +2,7 @@ package com;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class UseEmployee {
 	
@@ -61,7 +62,7 @@ public class UseEmployee {
 			System.exit(0);
 			
 		default:
-			System.out.println("Invalid input");
+			LOGGER.log(Level.WARNING, "Invalid input");
 			break;
 		 }
 	}
