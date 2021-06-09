@@ -2,10 +2,11 @@ package com;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.util.Iterator;
+//import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+//import java.util.stream.Collectors;
+//import java.util.stream.Stream;
 
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -135,28 +136,35 @@ public class EmployeeServiceImpl implements EmployeeService {
 		try {
 		System.out.println("Enter employee number");
 		Scanner deleteEmp = new Scanner(System.in);
+		Iterator<Employee> it = employeeAL.iterator();
 		int number = deleteEmp.nextInt();
-		for (Employee employee : employeeAL) {
+		while(it.hasNext()) {
+			Employee employee = it.next();
 			if(employee.getEmpNo() == number) {
 				System.out.println("Would you like to delete " + employee.getEmpName() + "?");
 				String decision = deleteEmp.nextLine();
+				decision = decision.toUpperCase();
 				switch(decision) {
 				case "YES":
-					employeeAL.remove(employee.getEmpName());
+					it.remove();
 					break;
-					
-				case "NO":
+				case "NO": 
+					System.out.println("Return");
 					break;
 				}
 			}
 		}
 		}catch(NoSuchElementException e) {
-			System.out.println("NoSuchElementException");
-		}
-		}
+				System.out.println("NoSuchElementException");
+			}
+	}
+		
+		
+		
+		
 
 
-
+	
 }	
 				
 			
