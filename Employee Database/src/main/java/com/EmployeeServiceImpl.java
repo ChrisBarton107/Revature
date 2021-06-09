@@ -1,12 +1,11 @@
 package com;
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Iterator;
-//import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
-//import java.util.stream.Collectors;
-//import java.util.stream.Stream;
+
 
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -33,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void displayAllEmployees() {
 		// Displays all employee data with a stream
 		employeeAL.stream()
-			.map(employee -> employee)
+			.collect(Collectors.toList())
 			.forEach(System.out::println);
 	}
 		
@@ -77,7 +76,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	
 	
-	
+	//In progress
 	public void updateEmployee() {
 		try {
 		System.out.println("Enter employee number ");
@@ -131,29 +130,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	
 	
-	
+	// In progress
 	public void deleteEmployee() {
 		try {
 		System.out.println("Enter employee number");
-		Scanner deleteEmp = new Scanner(System.in);
 		Iterator<Employee> it = employeeAL.iterator();
+		Scanner deleteEmp = new Scanner(System.in);
 		int number = deleteEmp.nextInt();
 		while(it.hasNext()) {
 			Employee employee = it.next();
 			if(employee.getEmpNo() == number) {
 				System.out.println("Would you like to delete " + employee.getEmpName() + "?");
-				String decision = deleteEmp.nextLine();
-				decision = decision.toUpperCase();
-				switch(decision) {
-				case "YES":
+				int decision = deleteEmp.nextInt();
+				if(decision == 1) {
+					System.out.println(employee.getEmpName() + " has been deleted");
 					it.remove();
 					break;
-				case "NO": 
-					System.out.println("Return");
+				}else if(decision != 1) {
 					break;
 				}
+				}
 			}
-		}
+		
 		}catch(NoSuchElementException e) {
 				System.out.println("NoSuchElementException");
 			}
