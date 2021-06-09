@@ -1,9 +1,7 @@
 package com;
 
-
 import java.util.Scanner;
 import java.util.logging.Logger;
-
 
 public class UseEmployee {
 	
@@ -14,7 +12,6 @@ public class UseEmployee {
 		LOGGER.info("Logger Name: " + LOGGER.getName());
 		
 		LOGGER.warning("Exceptions may occur");
-		
 		
 		
 		// Employee service interface
