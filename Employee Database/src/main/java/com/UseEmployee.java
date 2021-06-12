@@ -2,15 +2,17 @@ package com;
 
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.lang.IndexOutOfBoundsException;
-import java.util.Scanner;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import java.util.logging.Level;
+
+import java.lang.IndexOutOfBoundsException;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+
 
 public class UseEmployee {
 	
@@ -44,7 +46,7 @@ public class UseEmployee {
 		LOGGER.info("Logger Name: " + LOGGER.getName());
 		LOGGER.warning("Exceptions may occur");
 		
-		Scanner scan = new Scanner(System.in);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
 		int menuSelection = 0;
 		
@@ -59,8 +61,13 @@ public class UseEmployee {
 					+ "5. Delete\n"
 					+ "6. Exit");
 		
-		menuSelection = scan.nextInt();
-		
+			try {
+				menuSelection = Integer.parseInt(reader.readLine());
+			} 
+			catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+			catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+			catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+			
 		switch(menuSelection) {
 		 case 1: 
 			 System.out.println(":: EMPLOYEE DATA ::\n");
@@ -68,49 +75,57 @@ public class UseEmployee {
 			 break;
 			 
 		 case 2: 
+			 int FinderNumber = 0;
 			 System.out.println(":: EMPLOYEE FINDER ::\n"
 			 		+ "Enter employee number: ");
 			 try {
-			 esInterface.findByEmployeeNo(employeeAL, scan.nextInt());
+				 FinderNumber = Integer.parseInt(reader.readLine());
+				 esInterface.findByEmployeeNo(employeeAL, FinderNumber);
 			 }
-			 catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
-			 catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
-			 catch(NoSuchElementException e) {LOGGER.log(Level.WARNING, "NoSuchElementException");}
+			 catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+			 catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+			 catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			 break;
-			 
+		
 		 case 3:
+			 int FinanceNumber = 0;
 			 System.out.println(":: FINANCE ::\n"
 			 		+ "Enter employee number: ");
 			 try {
-			 esInterface.calculateYearlySalary(employeeAL, scan.nextInt());
+				 FinanceNumber = Integer.parseInt(reader.readLine());
+				 esInterface.calculateYearlySalary(employeeAL, FinanceNumber);
 			 }
-			 catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
-			 catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
-			 catch(NoSuchElementException e) {LOGGER.log(Level.WARNING, "NoSuchElementException");}
+			 catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+			 catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+			 catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			 break;
-			 
+		
 		 case 4: 
+			 int UpdateNumber = 0;
 			 System.out.println(":: UPDATE EMPLOYEE ::\n"
 			 		+ "Enter employee number: ");
 			 try {
-			 esInterface.updateEmployee(employeeAL, scan.nextInt());
+				 UpdateNumber = Integer.parseInt(reader.readLine());
+				 esInterface.updateEmployee(employeeAL, UpdateNumber);
 			 }
-			 catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
-			 catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
-			 catch(NoSuchElementException e) {LOGGER.log(Level.WARNING, "NoSuchElementException");}
+			 catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+			 catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+			 catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			 break;
-			 
+	
 		 case 5: 
+			int DeleteNumber = 0;
 			System.out.println(":: DELETE EMPLOYEE ::\n"
 					+ "Enter employee number: ");
 			try {
-			esInterface.deleteEmployee(employeeAL, scan.nextInt());
+				DeleteNumber = Integer.parseInt(reader.readLine());
+				esInterface.deleteEmployee(employeeAL, DeleteNumber);
 			}
-			catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
-			catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
-			catch(NoSuchElementException e) {LOGGER.log(Level.WARNING, "NoSuchElementException");}
+			catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+			catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+			catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			break;
-				 
+	 
 		 case 6: 
 			System.out.println("Exit");
 			System.exit(0);
@@ -118,13 +133,23 @@ public class UseEmployee {
 		default:
 			LOGGER.log(Level.WARNING, "Invalid input");
 			break;
-		 }
 		
+		 }
 		}
+		
 			
-
+	
+	
 	}
-
-
+	
 
 }
+
+
+
+
+
+
+
+
+

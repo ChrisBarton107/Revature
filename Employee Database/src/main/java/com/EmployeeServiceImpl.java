@@ -1,11 +1,24 @@
 package com;
 
 import java.util.Iterator;
+import java.util.logging.Logger;
 import java.util.List;
-import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+
+
 public class EmployeeServiceImpl implements EmployeeService {
+	
+	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
+
+	
+	BufferedReader DataReader = new BufferedReader(new InputStreamReader(System.in));
+	
+	
 
 	
 	
@@ -43,40 +56,70 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	public void updateEmployee(List<Employee> ListOfEmployees, int employeeNumber) {
 		//Iterator<Employee> it = emp.iterator();
-		Scanner upEmployee = new Scanner(System.in);
+		int Update = 0;
 		Employee e1 = ListOfEmployees.get(employeeNumber);
 		System.out.println("UPDATE OPTIONS:\n"
 				+ "1. Name\n"
 				+ "2. Salary\n"
 				+ "3. Address\n");
-		int updateOptionNumber = upEmployee.nextInt();
-			
-		switch(updateOptionNumber) {
+		try {
+			Update = Integer.parseInt(DataReader.readLine());
+		} 
+		catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+		catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+		catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+		
+		switch(Update) {
 			case 1: 
+				String Name = null;
 				System.out.println(": NAME :\n");
 				System.out.println("Current name: " + e1.getEmpName());
 				System.out.println("New name: ");
-				String newName = upEmployee.nextLine();
-				e1.setEmpName(newName);
+				try {
+					Name = DataReader.readLine();
+				} 
+				catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+				catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+				catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+				e1.setEmpName(Name);
 				break;
 		
 			case 2:
+				double NewSalary = 0;
 				System.out.println(": SALARY :\n");
 				System.out.println(e1.getEmpName() + ", " + "Current salary: " + e1.getSalary());
 				System.out.println("New salary: ");
-				Double newSalary = upEmployee.nextDouble();
-				e1.setSalary(newSalary);
+				try {
+					NewSalary = Double.parseDouble(DataReader.readLine());
+				} 
+				catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+				catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+				catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+				e1.setSalary(NewSalary);
 				break;
 				
 			case 3:
+				String NewCity = null;
+				String NewState = null;
 				System.out.println(": ADDRESS :\n");
 				System.out.println(e1.getEmpName() + ", " + "Current location: " + e1.getAddress());
 				System.out.println("New city: ");
-				String newCity = upEmployee.nextLine();
-				System.out.println(newCity);
+				try {
+					NewCity = DataReader.readLine();
+				} 
+				catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+				catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+				catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+				
+				System.out.println(NewCity);
 				System.out.println("New state: ");
-				String newState = upEmployee.nextLine();
-				e1.setAddress(new Address(newCity, newState));
+				try {
+					NewState = DataReader.readLine();
+				} 
+				catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+				catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+				catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+				e1.setAddress(new Address(NewCity, NewState));
 				break;
 				}	
 			}
@@ -89,11 +132,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	public void deleteEmployee(List<Employee> ListOfEmployees, int employeeNumber) {
 		//Iterator<Employee> it = emp.iterator();
-		Scanner deleteEmployee = new Scanner(System.in);
+		int DeleteEmployee = 0;
 		Employee e1 = ListOfEmployees.get(employeeNumber);
 		System.out.println("Would you like to delete " + e1.getEmpName() + "?");
-		int deleteE = deleteEmployee.nextInt();
-		switch(deleteE) {
+		try {
+			DeleteEmployee = Integer.parseInt(DataReader.readLine());
+		} 
+		catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
+		catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
+		catch (IndexOutOfBoundsException ioobe) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
+		
+		switch(DeleteEmployee) {
 		case 1: 
 			ListOfEmployees.remove(e1);
 			break;
