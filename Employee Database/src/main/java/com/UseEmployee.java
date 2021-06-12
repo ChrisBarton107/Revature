@@ -63,16 +63,15 @@ public class UseEmployee {
 		
 		switch(menuSelection) {
 		 case 1: 
-			 System.out.println(":: EMPLOYEE DATA ::");
+			 System.out.println(":: EMPLOYEE DATA ::\n");
 			 esInterface.displayAllEmployees(employeeAL);
 			 break;
 			 
 		 case 2: 
-			 System.out.println(":: EMPLOYEE FINDER ::");
-			 System.out.println("Enter employee number: ");
+			 System.out.println(":: EMPLOYEE FINDER ::\n"
+			 		+ "Enter employee number: ");
 			 try {
-			 int empNumber = scan.nextInt();
-			 esInterface.findByEmployeeNo(employeeAL, empNumber);
+			 esInterface.findByEmployeeNo(employeeAL, scan.nextInt());
 			 }
 			 catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			 catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
@@ -80,11 +79,10 @@ public class UseEmployee {
 			 break;
 			 
 		 case 3:
-			 System.out.println(":: FINANCE ::");
-			 System.out.println("Enter employee number: ");
+			 System.out.println(":: FINANCE ::\n"
+			 		+ "Enter employee number: ");
 			 try {
-			 int empNumber2 = scan.nextInt();
-			 esInterface.calculateYearlySalary(employeeAL, empNumber2);
+			 esInterface.calculateYearlySalary(employeeAL, scan.nextInt());
 			 }
 			 catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			 catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
@@ -92,11 +90,10 @@ public class UseEmployee {
 			 break;
 			 
 		 case 4: 
-			 System.out.println(":: UPDATE EMPLOYEE ::");
-			 System.out.println("Enter employee number ");
+			 System.out.println(":: UPDATE EMPLOYEE ::\n"
+			 		+ "Enter employee number: ");
 			 try {
-			 int empNumber3 = scan.nextInt();
-			 esInterface.updateEmployee(employeeAL, empNumber3);
+			 esInterface.updateEmployee(employeeAL, scan.nextInt());
 			 }
 			 catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			 catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
@@ -104,11 +101,10 @@ public class UseEmployee {
 			 break;
 			 
 		 case 5: 
-			System.out.println(":: DELETE EMPLOYEE ::\n");
-			System.out.println("Enter employee number: ");
+			System.out.println(":: DELETE EMPLOYEE ::\n"
+					+ "Enter employee number: ");
 			try {
-			int empNumber4 = scan.nextInt();
-			esInterface.deleteEmployee(employeeAL, empNumber4);
+			esInterface.deleteEmployee(employeeAL, scan.nextInt());
 			}
 			catch(IndexOutOfBoundsException e) {LOGGER.log(Level.WARNING, "IndexOutOfBoundsException");}
 			catch(InputMismatchException e) {LOGGER.log(Level.WARNING, "InputMismatchException");}
