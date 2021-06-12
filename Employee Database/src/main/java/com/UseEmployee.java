@@ -46,7 +46,7 @@ public class UseEmployee {
 		LOGGER.info("Logger Name: " + LOGGER.getName());
 		LOGGER.warning("Exceptions may occur");
 		
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader MainReader = new BufferedReader(new InputStreamReader(System.in));
 		
 		int menuSelection = 0;
 		
@@ -62,7 +62,7 @@ public class UseEmployee {
 					+ "6. Exit");
 		
 			try {
-				menuSelection = Integer.parseInt(reader.readLine());
+				menuSelection = Integer.parseInt(MainReader.readLine());
 			} 
 			catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
 			catch (IOException ioe) {LOGGER.log(Level.WARNING, "IOException");}
@@ -79,7 +79,7 @@ public class UseEmployee {
 			 System.out.println(":: EMPLOYEE FINDER ::\n"
 			 		+ "Enter employee number: ");
 			 try {
-				 FinderNumber = Integer.parseInt(reader.readLine());
+				 FinderNumber = Integer.parseInt(MainReader.readLine());
 				 esInterface.findByEmployeeNo(employeeAL, FinderNumber);
 			 }
 			 catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
@@ -92,7 +92,7 @@ public class UseEmployee {
 			 System.out.println(":: FINANCE ::\n"
 			 		+ "Enter employee number: ");
 			 try {
-				 FinanceNumber = Integer.parseInt(reader.readLine());
+				 FinanceNumber = Integer.parseInt(MainReader.readLine());
 				 esInterface.calculateYearlySalary(employeeAL, FinanceNumber);
 			 }
 			 catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
@@ -105,7 +105,7 @@ public class UseEmployee {
 			 System.out.println(":: UPDATE EMPLOYEE ::\n"
 			 		+ "Enter employee number: ");
 			 try {
-				 UpdateNumber = Integer.parseInt(reader.readLine());
+				 UpdateNumber = Integer.parseInt(MainReader.readLine());
 				 esInterface.updateEmployee(employeeAL, UpdateNumber);
 			 }
 			 catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
@@ -118,7 +118,7 @@ public class UseEmployee {
 			System.out.println(":: DELETE EMPLOYEE ::\n"
 					+ "Enter employee number: ");
 			try {
-				DeleteNumber = Integer.parseInt(reader.readLine());
+				DeleteNumber = Integer.parseInt(MainReader.readLine());
 				esInterface.deleteEmployee(employeeAL, DeleteNumber);
 			}
 			catch (NumberFormatException nfe) {LOGGER.log(Level.WARNING, "NumberFormatException");}
