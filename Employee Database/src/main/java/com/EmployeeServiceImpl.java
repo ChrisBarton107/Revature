@@ -1,168 +1,121 @@
 package com;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 
 public class EmployeeServiceImpl implements EmployeeService {
 
-	private static ArrayList<Employee> employeeAL = new ArrayList<Employee>() {
-		{
-		{
-		add(new Employee(1, "Carol Burns", 60000.00, new Address("Twinsburg", "Ohio")));
-		add(new Employee(2, "John Smith", 50000.00, new Address("Atlanta", "Georgia")));
-		add(new Employee(3, "Nathan Bates", 55000.00, new Address("Los Angeles", "California")));
-		add(new Employee(4, "Harry Turner", 45000.00, new Address("Albany", "New York")));
-		add(new Employee(5, "Sam Liptak", 65000.00, new Address("Akron", "Ohio")));
-		add(new Employee(6, "Brad Williams", 68000.00, new Address("Columbus", "Ohio")));
-		add(new Employee(7, "Angela Lee", 53000.00, new Address("Montgomery", "Alabama")));
-		add(new Employee(8, "Natalie Richards", 75000.00, new Address("San Francisco", "California")));
-		add(new Employee(9, "Bill Donaldson", 48000.00, new Address("Buffalo", "New York")));
-		add(new Employee(10, "Don Stevenson", 67000.00, new Address("Miami", "Florida")));
-		}
-		
-	};
-	};
-
 	
 	
-	public void displayAllEmployees() {
+	public void displayAllEmployees(List<Employee> ListOfEmployees) {
 		// Displays all employee data with a stream
-		employeeAL.stream()
+		ListOfEmployees.stream()
 			.collect(Collectors.toList())
 			.forEach(System.out::println);
+		System.out.println("\n");
 	}
-		
-
-
 	
-	public void calculateYearlySalary() {
-		try {
-		System.out.println("Enter employee number");
-		Scanner sal = new Scanner(System.in);
-		int num = sal.nextInt();
-		for (Employee employee : employeeAL) {
-			if(employee.getEmpNo() == num) {
-				System.out.println(employee.getEmpName()+","+ " $" + employee.getSalary());
-			}		
-		}	
-		}catch(NoSuchElementException e) {
-			System.out.println("NoSuchElementException");
-			}
+	
+	
+	
+	
+	
+	public void calculateYearlySalary(List<Employee> ListOfEmployees, int employeeNumber) {
+		Employee e = ListOfEmployees.get(employeeNumber);
+		System.out.println("Name: " + e.getEmpName() + "," + " Salary: $" + e.getSalary());
+		System.out.println("\n");
 	}
+	
+	
+	
+	
+	
+	
+	public void findByEmployeeNo(List<Employee> ListOfEmployees, int employeeNumber) {
+		Employee e = ListOfEmployees.get(employeeNumber);
+		System.out.println(e);
+		System.out.println("\n");
+	}
+	
+	
+	
+	
+	
+	
+	public void updateEmployee(List<Employee> ListOfEmployees, int employeeNumber) {
+		//Iterator<Employee> it = emp.iterator();
+		Scanner upEmployee = new Scanner(System.in);
+		Employee e = ListOfEmployees.get(employeeNumber);
+		System.out.println("UPDATE OPTIONS:\n"
+				+ "1. Name\n"
+				+ "2. Salary\n"
+				+ "3. Address\n");
+		int updateOptionNumber = upEmployee.nextInt();
 			
+		switch(updateOptionNumber) {
+			case 1: 
+				System.out.println(": NAME :\n");
+				System.out.println("Current name: " + e.getEmpName());
+				System.out.println("New name: ");
+				String newName = upEmployee.nextLine();
+				e.setEmpName(newName);
+				break;
 		
-	
-	
-	
-	
-	public void findByEmployeeNo() {
-		try {
-		System.out.println("Enter employee number");
-		Scanner employeeNumber = new Scanner(System.in);
-		int input = employeeNumber.nextInt();
-		for (Employee employee : employeeAL) {
-			if (employee.getEmpNo() == input) {
-				System.out.println(employee.getEmpNo()+", "+ employee.getEmpName());
-			}
-		}
-		}catch(NoSuchElementException e) {
-			System.out.println("NoSuchElementException");
-		}
-	}
-
-	
-	
-	//In progress
-	public void updateEmployee() {
-		try {
-		System.out.println("Enter employee number ");
-		Scanner update = new Scanner(System.in);
-		int updateEmployee = update.nextInt();
-		for(Employee employee : employeeAL) {
-			if (employee.getEmpNo() == updateEmployee) {
-				System.out.println(employee.getEmpName());
-				System.out.println("UPDATE OPTIONS:\n"
-						+ "1. Name\n"
-						+ "2. Salary\n"
-						+ "3. Address\n");
-				Scanner upEmployee = new Scanner(System.in);
-				int updateOptionNumber = upEmployee.nextInt();
-			
-				switch(updateOptionNumber) {
-				case 1: 
-					System.out.println(": NAME :\n");
-					System.out.println("Current name: " + employee.getEmpName());
-					System.out.println("New name:");
-					String newName = upEmployee.nextLine();
-					employee.setEmpName(newName);
-					break;
-		
-				case 2:
-					System.out.println(": SALARY :\n");
-					System.out.println(employee.getEmpName() + ", " + "Current salary: " + employee.getSalary());
-					System.out.println("New salary:");
-					Double newSalary = upEmployee.nextDouble();
-					employee.setSalary(newSalary);
-					break;
+			case 2:
+				System.out.println(": SALARY :\n");
+				System.out.println(e.getEmpName() + ", " + "Current salary: " + e.getSalary());
+				System.out.println("New salary: ");
+				Double newSalary = upEmployee.nextDouble();
+				e.setSalary(newSalary);
+				displayAllEmployees(ListOfEmployees);
+				break;
 				
-				case 3:
-					System.out.println(": ADDRESS :\n");
-					System.out.println(employee.getEmpName() + ", " + "Current location: " + employee.getAddress());
-					System.out.println("New city:");
-					String newCity = upEmployee.nextLine();
-					System.out.println(newCity);
-					System.out.println("New state:");
-					String newState = upEmployee.nextLine();
-					employee.setAddress(new Address(newCity, newState));
-					break;
+			case 3:
+				System.out.println(": ADDRESS :\n");
+				System.out.println(e.getEmpName() + ", " + "Current location: " + e.getAddress());
+				System.out.println("New city: ");
+				String newCity = upEmployee.nextLine();
+				System.out.println(newCity);
+				System.out.println("New state: ");
+				String newState = upEmployee.nextLine();
+				e.setAddress(new Address(newCity, newState));
+				break;
 				}	
 			}
+		
+		
+	
+	
+	
+	
+	
+	public void deleteEmployee(List<Employee> ListOfEmployees, int employeeNumber) {
+		//Iterator<Employee> it = emp.iterator();
+		Scanner deleteEmployee = new Scanner(System.in);
+		Employee e = ListOfEmployees.get(employeeNumber);
+		System.out.println("Would you like to delete " + e.getEmpName() + "?");
+		int deleteE = deleteEmployee.nextInt();
+		switch(deleteE) {
+		case 1: 
+			ListOfEmployees.remove(e);
+			break;
+		
+		case 2:
+			break;
 		}
-		}catch(NoSuchElementException e) {
-			System.out.println("NoSuchElementException");
-		}
-		
-	}
-	
-	
-	
-	// In progress
-	public void deleteEmployee() {
-		try {
-		System.out.println("Enter employee number");
-		Iterator<Employee> it = employeeAL.iterator();
-		Scanner deleteEmp = new Scanner(System.in);
-		int number = deleteEmp.nextInt();
-		while(it.hasNext()) {
-			Employee employee = it.next();
-			if(employee.getEmpNo() == number) {
-				System.out.println("Would you like to delete " + employee.getEmpName() + "?");
-				int decision = deleteEmp.nextInt();
-				if(decision == 1) {
-					System.out.println(employee.getEmpName() + " has been deleted");
-					it.remove();
-					break;
-				}else if(decision != 1) {
-					break;
-				}
-				}
-			}
-		
-		}catch(NoSuchElementException e) {
-				System.out.println("NoSuchElementException");
-			}
-	}
-		
-		
-		
+	}	
 		
 
+	
 
 	
+	
+
+
+
 }	
 				
 			

@@ -1,14 +1,16 @@
 package com;
 
+import java.util.List;
+
 public interface EmployeeService {
 
-	public void displayAllEmployees();
+	public void displayAllEmployees(List<Employee> employee);
 	
-	public void calculateYearlySalary();
+	public void calculateYearlySalary(List<Employee> employee, int employeeNumber);
 	
-	public void findByEmployeeNo();
+	public void findByEmployeeNo(List<Employee> employee, int employeeNumber);
 	
-	public void updateEmployee();
+	public void updateEmployee(List<Employee> employee, int employeeNumber);
 	
-	public void deleteEmployee();
+	public void deleteEmployee(List<Employee> employee, int employeeNumber);
 }
