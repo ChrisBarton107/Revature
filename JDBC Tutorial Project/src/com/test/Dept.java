@@ -24,6 +24,7 @@ public class Dept {
 
 	
 	
+	
 	public String getDeptName() {
 		return deptName;
 	}
@@ -34,6 +35,7 @@ public class Dept {
 
 	
 	
+	
 	public String getLoc() {
 		return loc;
 	}
@@ -41,6 +43,7 @@ public class Dept {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
+	
 	
 	
 	

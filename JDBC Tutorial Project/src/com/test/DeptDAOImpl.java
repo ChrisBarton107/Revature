@@ -12,8 +12,8 @@ public class DeptDAOImpl implements DeptDAO {
 		System.out.println("SELECT AN OPTION\n"
 				+ "1. Display Department\n"
 				+ "2. Insert Department\n"
-				+ "3. Delete Department\n"
-				+ "4. Update Department\n");
+				+ "3. Modify Department\n"
+				+ "4. Delete Department\n");
 	}
 
 	
