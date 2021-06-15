@@ -19,7 +19,7 @@ public class Test {
 		int choice = 0;
 		
 		do {
-			ddInterface.Menu();
+			ddInterface.menu();
 			Scanner sc=new Scanner(System.in);
 			choice = sc.nextInt();
 		

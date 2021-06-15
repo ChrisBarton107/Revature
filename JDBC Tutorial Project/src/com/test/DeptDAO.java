@@ -2,14 +2,16 @@ package com.test;
 
 public interface DeptDAO {
 	
-	public void Menu();
+	public void menu();
 	
 	public void listDept();
 	
 	public void insertDept();
 	
+	public int modifyDept();
+	
 	public int deleteDept();
 	
-	public int modifyDept();
+	
 	
 }

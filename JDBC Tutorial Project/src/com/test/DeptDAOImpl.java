@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class DeptDAOImpl implements DeptDAO {
 
 	@Override
-	public void Menu() {
+	public void menu() {
 		System.out.println("SELECT AN OPTION\n"
 				+ "1. Display Department\n"
 				+ "2. Insert Department\n"
@@ -61,6 +61,28 @@ public class DeptDAOImpl implements DeptDAO {
 	
 	
 	@Override
+	public int modifyDept() {
+		int row=0;
+		String QUERY = "UPDATE dept SET dname='IT80' WHERE deptno=?";
+		 try (Connection conn = ConnectionUtil.getConnection();
+	             java.sql.PreparedStatement preparedStatement = conn.prepareStatement(QUERY)) 
+	     {	preparedStatement.setInt(1, 80);
+	        row = preparedStatement.executeUpdate();
+	         // rows affected
+	         System.out.println(row);
+	    	 
+	     }catch( SQLException e)
+	     {
+	    	 System.out.println(" Row cannot be updated");
+	     }
+		   return row;
+	}
+	
+	
+	
+	
+	
+	@Override
 	public int deleteDept() {
 		int row=0;
 		String QUERY = "Delete from dept where deptno = ?";
@@ -77,28 +99,6 @@ public class DeptDAOImpl implements DeptDAO {
 	    	 System.out.println(" Row cannot be deleted");
 	     }
 		   return row; 
-	}
-
-	
-	
-	
-	
-	@Override
-	public int modifyDept() {
-		int row=0;
-		String QUERY = "UPDATE dept SET dname='IT80' WHERE deptno=?";
-		 try (Connection conn = ConnectionUtil.getConnection();
-	             java.sql.PreparedStatement preparedStatement = conn.prepareStatement(QUERY)) 
-	     {	preparedStatement.setInt(1, 80);
-	        row = preparedStatement.executeUpdate();
-	         // rows affected
-	         System.out.println(row);
-	    	 
-	     }catch( SQLException e)
-	     {
-	    	 System.out.println(" Row cannot be updated");
-	     }
-		   return row;
 	}
 
 	
