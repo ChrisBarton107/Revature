@@ -13,7 +13,6 @@ import java.io.BufferedReader;
 
 public class EmployeeServiceImpl implements EmployeeService {
 	
-	//private static final 
 	static Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
 
 	
