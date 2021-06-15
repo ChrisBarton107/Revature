@@ -13,7 +13,8 @@ import java.io.BufferedReader;
 
 public class EmployeeServiceImpl implements EmployeeService {
 	
-	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
+	//private static final 
+	static Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
 
 	
 	BufferedReader DataReader = new BufferedReader(new InputStreamReader(System.in));

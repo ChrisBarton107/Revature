@@ -16,7 +16,9 @@ import java.io.BufferedReader;
 
 public class UseEmployee {
 	
-	private static final Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
+	//private static final 
+	
+	static Logger LOGGER = Logger.getLogger(UseEmployee.class.getName());
 	
 	public static EmployeeServiceImpl esInterface = new EmployeeServiceImpl();
 	
